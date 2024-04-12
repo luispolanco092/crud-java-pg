@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="htpp://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Nuevo Usuario</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <!-- Bootstrap CSS file from WebJars project (https://www.webjars.org/)  -->
+    <link th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}" rel="stylesheet" />
+
+</head>
+<body>
+    <!-- Navbar with Bootstrap 5 styles  -->
+    <div class="container">
+        <div>
+            <h1>Formulario de Usuarios</h1>
+        </div>
+
+        <div class="card">
+
+            <div class="card-header">
+                Agregar Usuario
+            </div>
+
+            <div class="card-body">
+                <form method="post" th:action="@{/nuevo}" th:object="${usuario}">
+                    <input type="hidden" th:field="*{id}">
+                    <div class="mb-3">
+                        <label class="form-label" for="nombre">Nombre:</label>
+                        <input class="form-control" type="text" id="name" th:field="*{name}">
+                    </div>
+
+                    <button class="btn btn-primary" type="submit">Guardar</button>
+                    <a class="btn btn-light" href="/users" >Volver a la Lista</a>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

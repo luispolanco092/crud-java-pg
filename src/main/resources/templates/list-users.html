@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="htpp://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Lista de Usuarios</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <!-- Bootstrap CSS file from WebJars project (https://www.webjars.org/)  -->
+    <link th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}" rel="stylesheet" />
+
+</head>
+<body>
+    <!-- Navbar with Bootstrap 5 styles  -->
+    <div class="container">
+        <div>
+            <h1>Lista de Usuarios</h1>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                Usuarios
+            </div>
+            <div class="card-body">
+
+                <table class="table table-bordered table-striped ">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Acciones</th>
+                    </tr>
+
+                    <tr th:each="usr : ${users}">
+                        <td th:text="${usr.id}"></td>
+                        <td th:text="${usr.name}"></td>
+                        <td>
+                            <a th:href="@{'/editar/' + ${usr.id}}" class="btn btn-info">Editar</a>
+                            <a th:href="@{'/eliminar/' + ${usr.id}}" class="btn btn-danger"
+                            onclick="return confirm('¿Estás seguro de eliminar este usuario?')"
+                            >Eliminar</a>
+                        </td>
+                    </tr>
+                </table>
+                <a class="btn btn-dark" th:href="@{/nuevo}">Nuevo Usuario</a>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
